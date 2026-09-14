@@ -4,7 +4,7 @@ Aplicação para apoio ao dimensionamento preliminar de instalações elétricas
 
 ## Como executar
 
-Instale **Bun 1.4.2** ([instruções oficiais](https://bun.com/docs/installation)) e **Node.js 22.23.1** para as ferramentas de teste. As versões da equipe estão em `.bun-version` e `.node-version`.
+Instale **Bun 1.4.2** ([instruções oficiais](https://bun.com/docs/installation)) e **Node.js 22.23.1** para as ferramentas de teste. As versões utilizadas estão em `.version-control`.
 
 Na pasta do projeto:
 
@@ -15,7 +15,9 @@ bun run dev
 
 Abra o endereço exibido no terminal (normalmente **http://localhost:5173**) e clique em **Carregar exemplo**. Para encerrar o servidor, pressione `Ctrl+C`.
 
-Após a migração, abrir `index.html` diretamente ou servir o código-fonte com `python -m http.server` não executa a aplicação: é necessário o Vite ou o build de produção.
+Após a migração, abrir `index.html` diretamente ou servir o código-fonte com o comando abaixo
+
+`python3 -m http.server 8000 --directory dist --bind 127.0.0.1`
 
 ## Comandos
 
@@ -47,8 +49,6 @@ Use `bun run test`, não `bun test`: os testes deste projeto usam Vitest. Bun ge
 ## Publicação
 
 Execute `bun run build` e publique **o conteúdo de `dist/`** em uma hospedagem estática. Não é necessário backend ou banco de dados para esta versão. `bun run preview` serve para conferir o build, não para operar a hospedagem de produção.
-
-python3 -m http.server 8000 --directory dist --bind 127.0.0.1
 
 Os projetos ficam na memória da página; exporte JSON antes de fechar ou recarregar. Arquivos legados são preservados, mas seus circuitos ambíguos ficam pendentes até recalcular. Na versão 2, os circuitos são resultados automáticos, regenerados a partir das entradas inclusive na importação.
 
